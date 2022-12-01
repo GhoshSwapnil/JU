@@ -1,0 +1,94 @@
+Synchronus Algo :
+-> LCR 
+     - Time Complexity- O(n)
+     - Message Complexity- O(n^2)
+
+-> HS 
+     - Time Complexity- O(n)
+     - Message Complexity- O(8n(1+ upperbound(log n)))
+   
+-> Leader Election Flood Max Algorithm
+     - Time Complexity- O(diam )
+     - Message Complexity- O(diam* |E|)
+
+-> BFS Spanning Tree 
+     - Time Complexity- O(diam+ 1)
+     - Message Complexity- O(|E|)
+
+     Examples
+     - broadcasting 
+        - ( Bidirectional, Unidirectional Edge )
+             - Time Complexity- O(diam+ 1)
+             - Message Complexity- O(|E|)
+
+     - child pointer ( parent or non-parent )
+        - ( Birectional Edge )
+             - Time Complexity- O(diam+ 1)
+             - Message Complexity- O(|E|)
+        - ( Unidirectional Edge ) //parallel SynchBFS
+             - Time Complexity- O(diam+ 1)
+             - Message Complexity- O((diam+1)* |E|)
+
+     - convergecast # 'fanned in' to source # bottom up approach # subtree completed moving up #  leaf node in BFS tree receives no parent message because it dosen't have child # 1) {parent , non-parent} message 2) done messange 
+         - ( Birectional Edge )
+             - Time Complexity- O(diam+ 1)
+             - Message Complexity- O(|E|)
+         - ( Unidirectional Edge )
+             - Time Complexity- O(diam^2)
+             - Message Complexity- O(diam^2* |E|)
+
+-> Bellman-Ford Shortest Path
+     - Time Complexity- O(n- 1)
+     - Message Complexity- O((n-1)* |E|)
+
+-> Maximal Independent Set (MIS) # Luby's Algo 
+    - 4logn phases 
+
+Asynchronus Algo:
+
+-> 1. Maximum Process Id 
+     - Message Complexity= O(n* |E|)
+     - Time Complexity= O(diam* n* d) #d is channel delay 
+
+-> 2. BFS Spanning Tree
+     - Message Complexity= O(n* |E|)
+     - Time Complexity= O(diam* n* d) #d is channel delay 
+
+-> 3. Shortest Path Tree
+     - Message Complexity= O(n^n* |E|)
+     - Time Complexity= O(n^n* n* d)
+
+Distributed Deadlock Detection Algorithms:
+
+-> 1. Mitchell and Merritt's Algorithm ( Single Resource Model ) // edge chasing 
+      - s(s-1)/2, where s= no of process in the cycle //two type of message 
+
+-> 2. Chandy-Misra-Hass Algorithm 
+
+      - AND Model // edge chasing  // one type of message 
+           - m(n-1)/2 where m= no of process, n= no of sites 
+
+      - OR Model //diffusion computation //two type of message 
+           - e= n(n-1), the algorithm send "e" query and receive "e" query  // e= no of edges // n= no of process 
+
+-> 3. Kshemkalyani-Singhal Algorithm ( P-out-of-Q Model )
+      -
+
+Mutual Exclusion Algorithms:
+
+-> 1. Dijkstra Algorithm 
+      - Entering time to C when some user in T is O(ln) where l= upper bound time b/w successive step of process
+
+-> 2. Lockout Free ME algorithm
+
+      - Peterson 2 Process
+           - Entering time to C when some user in T is c+ O(l) where l= upper bound time b/w successive step of process
+ 
+      - Peterson n Process 
+           - Entering time to C when some user in T is 2^(n-1)c+ O(2^nl)
+
+-> 3. Peterson Tournament Algorithm 
+      -  Entering time to C when some user in T is (n-1)c+ O((n^2)*l) 
+
+-> 4. Bakery Algorithm
+      - Entering time to C when some user in T is (n-1)c+ O((n^2)*l) 
